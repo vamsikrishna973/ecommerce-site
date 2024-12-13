@@ -1,0 +1,24 @@
+
+
+
+<div class="container mt-4 " >
+  <div class="row">
+    <div class="col-md-2" *ngFor="let product of cart "><p>{{ product.name }} - ${{ product.price }}</p>
+      <div class="card h-50">
+        <div class="card-img-container">
+        <img [src]="product.image" class="card-img-top" alt="{{ product.name }}">
+        </div>
+        <div class="card-body" >
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text"><strong>${{ product.price }}</strong></p>
+          <div class="row">
+            <div class="col-md-6"><button (click)="removeItem(product.id)">Remove</button></div>
+            <div class="col-md-6"><button (click)="buyProduct(product)">Buy</button></div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

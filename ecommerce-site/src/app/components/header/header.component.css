@@ -1,0 +1,9 @@
+li :hover{
+    background-color: rgb(141, 173, 180);
+    border-radius: 10px;
+}
+.l1 :hover{
+    background-color: beige;
+    border-radius: 5px;
+
+}

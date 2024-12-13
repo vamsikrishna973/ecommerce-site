@@ -1,0 +1,107 @@
+
+<div class="container mt-5" id="container" >
+  <div class="row"><br><br>
+    <div class="col-md-2" *ngFor="let product of shoppingCart "><br><br>
+      <div class="card h-50">
+        <div class="card-img-container">
+        <img [src]="product.image" class="card-img-top" alt="{{ product.name }}">
+        </div>
+        <div class="card-body" >
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text"><strong>${{ product.price }}</strong></p>
+          <div class="row">
+            <div class="col-md-6">
+            
+            <button class="btn btn-primary" (click)="Buy(product)" >Buy</button>
+          </div>
+            <div class="col-md-6">
+            <button class="btn btn-primary" (click)="removeItem(product.id)" >remove</button>
+            </div>
+          </div>
+        </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<div *ngIf="selectedProduct" class="container text-center" id="form" style="margin-top: 20px;">
+  <h3 class="center w-100vh">Transaction Form</h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+      <label for="productName">Product Name:</label></div>
+      <div class="col">
+      <input id="productName" class="form-control" type="text" [(ngModel)]="transactionForm.productName" name="productName" readonly />
+      </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+      <label for="productPrice">Product Price:</label></div>
+      <div class="col">
+      <input id="productPrice" class="form-control" type="text" [(ngModel)]="transactionForm.productPrice" name="productPrice" readonly />
+      </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+      <label for="type">Transaction Type</label>
+        </div>
+        <div class="col">
+      <select id="type" class="form-control" [(ngModel)]="transactionForm.type" name="type">
+        <option value="UPI">UPI</option>
+        <option value="CARD">CARD</option>
+        <option value="ONLINE BANKING">ONLINE BANKING</option>
+      </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+      <label for="date">Transaction Date:</label></div>
+      <div class="col">
+      <input id="date" type="date" [(ngModel)]="transactionForm.date" name="date" />
+      </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <label for="address">Address:</label>
+        </div>
+        <div class="col">
+          <textarea name="address" id="address" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+      <label for="status">Transaction Status:</label>
+        </div>
+        <div class="col">
+      <select id="status" class="form-control" [(ngModel)]="transactionForm.status" name="status">
+        <option value="Pending">Pending</option>
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-outline-primary" type="submit">Submit Transaction</button>
+  </form>
+</div>
+
+ 
